@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+	<style>
+		#video{
+			margin:20px auto;
+			width:720px;
+			background-color:#FF0;
+			padding:5px;
+			border:2px solid #FF9900;
+			border-radius:10px;/*indicamos borde redondo que se vera en cualquier navegador que soporte este estilo*/
+			-webkit-border-radius:10px;/*indicamos borde redondo que se vera en el navegador chrome lo hacemos asi para brindar una mayor compatibilidad*/
+			-moz-border-radius:10px;/*indicamos borde redondo que se vera en el navegador mozila*/
+			box-shadow:#666 15px 10px 10px;
+		}
+		#video:hover{
+			
+		}
+		nav{
+			margin:5px 0;
+		}
+		#botones{
+			float:left;
+			width:100px;
+			height:20px;
+		}
+		#barra{
+			background:#FFF;
+			width:600px;
+			height:16px;
+			border:1px #666666 solid;
+			padding:3px;
+			margin-left:80px;
+		}
+		#progreso{
+			width:0px;
+			height:16px;
+			background:rgba(0,0,150,0.5);
+		}
+	</style>
+    
+    <script>
+		var miaudio, reproducir, barra, progreso, maximo;
+		maximo = 600;//ancho de la barra
+		function comenzar(){
+			miaudio = document.getElementById("miAudio");
+			reproducir = document.getElementById("play");
+			barra = document.getElementById("barra");
+			progreso = document.getElementById("progreso");
+			
+			reproducir.addEventListener("click",clicando,false);
+			barra.addEventListener("click",adelantando,false);
+		}
+		function clicando(){
+			if((miaudio.paused==false)&&(miaudio.ended==false)){//si el video no esta pausado ni finalizado
+				miaudio.pause();//pausamos el video
+				reproducir.innerHTML="Play";//permite cambiar el texto interno del boton reproducir
+			}else{
+				miaudio.play();//si el video esta pausado o finalizado entonces reproducimos
+				reproducir.innerHTML="Stop";//permite cambiar el texto interno del boton reproducir
+				
+				//funcion de js que permite llamar a una funcion con cierta frecuencia
+				bucle = setInterval(estado,30);//indicamos que llame a la funcion estado cada 30 milisegundos 
+			}
+		}
+		function estado(){
+			//acontinuacion elaboraremos una reigla de tres para saber en que estado tiene que estar la barra en un tiempo determinado
+			var total = parseInt(miaudio.currentTime*maximo/miaudio.duration);
+			progreso.style.width=total+"px";//modificamos el estilo el ancho, ya que cuenta con 0px con el valor total
+		}
+		function adelantando(posicion){
+			//para saber en donde hizo click
+			var ratonx = posicion.pageX-barra.offsetLeft;
+			//reigla de tres para saber el tiempo del video que correspondera el click que hacen
+			var nuevoTiempo = ratonx*miaudio.duration/maximo;
+			miaudio.currentTime=nuevoTiempo;
+			progreso.style.width=ratonx+"px";
+		}
+		window.addEventListener("load",comenzar,false);//evento de la pagina que se ejecutara cuando se termine de cargar toda la pagina para que se carguen los componentes y asi poder aplicar los eventos
+	</script>
+    
+</head>
+
+<body>
+	<section id="reproductor">
+    	<audio id="miAudio">
+        	<source src="Audio/Moonlight_Sonata_by_Beethoven.mp3"/>
+            <source src="Audio/Moonlight_Sonata_by_Beethoven.ogv"/>
+        </audio>
+        <nav>
+        	<div id="botones">
+            	<button type="button" id="play">play</button>
+            </div>
+            <div id="barra">
+            	<div id="progreso"/>
+            </div>
+        </nav>
+    </section>
+</body>
+</html>

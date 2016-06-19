@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<style>
+	#lienzo{
+		border:solid #000 1px;
+	}
+	section{
+		width:800px;
+		margin:auto;
+	}
+</style>
+<script>
+	function comenzar(){
+		var elemento = document.getElementById("lienzo");
+		lienzo = elemento.getContext("2d");
+		
+		lienzo.fillStyle="#880000";//indicamos color
+		lienzo.fillRect(200,150,300,200);//dibujamos rectangulo
+		lienzo.globalCompositeOperation="source-out";//indicamos superposiciones
+		lienzo.fillStyle="#AAAAFF";
+		lienzo.font="bold 60px verdana";
+		lienzo.textAlign="center";
+		lienzo.textBaseline="middle";
+		
+		lienzo.fillText("Hola Alumnos",350,250);
+		
+	}
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+
+<body>
+	<section>
+    	<canvas id="lienzo" width="800" height="500">
+        	Su Navegador No Soporta Canvas
+        </canvas>
+    </section>
+</body>
+</html>

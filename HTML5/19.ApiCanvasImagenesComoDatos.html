@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+	section{
+		width:500px;
+		margin:auto;
+	}
+	#lienzo{
+		border:solid #F00 1px;
+	}
+</style>
+<script>
+	function comenzar(){
+		var elemento=document.getElementById("lienzo");
+		lienzo=elemento.getContext("2d");
+		
+		var imagen = new Image();//creamos variable de tipo objeto ""Imagen
+		imagen.src="imagenes/1.jpg";//indicamos la imagen
+		imagen.addEventListener("load",manipularimagen,false);//indicamos a la imagen que permanesca a la escucha del evento load
+	}
+	function manipularimagen(e){
+			imagenn=e.target;//indicamos que la imagen va a ser igual al elemento que descencadene la accion
+			lienzo.drawImage(imagenn,0,0);//dibujamos la imagen en la posicion 0,0 dentro del canvas
+			var infoImagen=lienzo.getImageData(0,0,145,145);//guardamos en la variable infoImagen la informacion en cuanto a pixeles(rgba) de la imagen, esa informacion pertenece a un arrya ya que es un pixel por cada rgba que se guardara
+			var posicion;
+			for(x=0;x<=145;x++){//recorremos horizontalmente 
+				for(y=0;y<=145;y++){//recorrido vertical
+					posicion=(infoImagen.width*4*y)+(x*4);
+					infoImagen.data[posicion]=255-infoImagen.data[posicion];//manipulamos la infirmacion correspondiente al color rojo
+					infoImagen.data[posicion+1]=255-infoImagen.data[posicion+1];//manipulamos la infirmacion correspondiente al color verde
+				    infoImagen.data[posicion+2]=255-infoImagen.data[posicion+2];//manipulamos la infirmacion correspondiente al color azul
+				}
+			}
+			lienzo.putImageData(infoImagen,0,0);
+	}
+
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+
+<body>
+	<section>
+    	<canvas id="lienzo" width="500" height="500">
+        Su Navegador No Soporta canvas
+        </canvas>
+    </section>
+</body>
+</html>

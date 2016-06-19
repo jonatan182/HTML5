@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<style>
+	#lienzo{
+		border:1px solid #000;/*Marcamos Limites Del Canvas, "#000" color negro*/
+	}
+	section{
+		width:800px;
+		position:relative;
+		margin:auto;
+	}
+</style>
+<script>
+function comenzar(){
+	var elemento = document.getElementById("lienzo");
+	lienzo = elemento.getContext("2d");
+	
+		//indicamos sombreado
+	lienzo.shadowColor="rgba(0,0,0,0.5)";//el a Es el alfa "0.5" puede ir de 0 a 1
+	
+	//indicamos la posicion del sombreado
+	lienzo.shadowOffsetX=4;//indicamos que la sombra estara desplazada 3px en x horizontal;
+	lienzo.shadowOffsetY=4;//indicamos que la sombra estara desplazada 3px en y vertical;
+	//difuminamos la sombra
+	lienzo.shadowBlur=5;	
+		
+	//indicamos el font
+	lienzo.font="bold 48px verdana";
+	
+	lienzo.textAlign="start";//aliniacion orizontal del texto, con "start" estamos diciendo que tiene que empezar a dibujar el texto en la posicion x,y que  inidcamos acontinuacion. Si indicamos end estamos diciendo que termine en la posicion x,y que le indicamos acontinuacion
+	lienzo.textBaseline="top";//aliniacion vertical "top", bottom
+	lienzo.fillText("Hola Alumnos",100,100);//dibujamos el texto relleno"strokefillText" o "strokeText" sin relleno en la posisicion en donde empezara o terminara dependiendo el textAlign "start:empieza", "end:termina"
+	//dibujamos linea de referencia para aprecion la propiedad top y bottom del textBaseline
+/*	lienzo.moveTo(100,100);
+	lienzo.lineTo(200,100);
+	lienzo.stroke();*/
+	
+	var dimensiones = lienzo.measureText("Hola Alumnos");//este metodo de measureText almacena en la variable dimenicones cuanto mide de ancho el texto "Hola Alumnos" para posteriormente poder dibujar un ractangulo
+	/*lienzo.strokeRect(100,100,dimensiones.width+10,53);*///dibujamos rectangulo rodeando el texto
+	
+}
+window.addEventListener("load",comenzar,false);
+</script>
+</head>
+
+<body>
+	<section>
+    	<canvas width="800" height="600" id="lienzo">
+        	Su Navegador No Soporta El Elmento canvas
+        </canvas>
+    </section>
+</body>
+</html>

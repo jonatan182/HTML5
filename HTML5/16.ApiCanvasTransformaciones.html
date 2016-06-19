@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<style>
+	#lienzo{
+		border:1px solid #000;/*Marcamos Limites Del Canvas, "#000" color negro*/
+	}
+	section{
+		width:800px;
+		position:relative;
+		margin:auto;
+	}
+</style>
+<script>
+	function comenzar(){
+		var elemento=document.getElementById("lienzo");
+		lienzo = elemento.getContext("2d");
+		
+		lienzo.font="bold 20px verdana"//aplicamos font
+		lienzo.fillText("Hola Alumno",50,20);//ingresamos texto en x=50 y y=20
+		//aplicamos transformaciones
+		lienzo.translate(100,100);//translate sirve para cambiar el origen de coordenadas que estan por defecto del lienzo que estan en la pantalla superior derecha, de esta manera el texto ahora se correra ya que no empezara desde el 0,0 que son las cordenadas que estan por defecto
+		lienzo.scale(3,1);//indicamos efecto de distorcion aumentando y disminuyendo el lienzo, que en el eje "x" tiene que ser el triple de grande, y en el eje "y" la tiene que dejar como esta ya que es en 1 por defecto, si lo indicamos en 0.5 sera la mitad de alto que esta el texto
+		lienzo.rotate(Math.PI);//aplicamos rotacion al canvas "al lienzo"
+		lienzo.fillText("Hola Alumno",-250,20);
+	}
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+<body>
+	<section>
+    	<canvas width="800" height="600" id="lienzo">
+        	Su Navegador No Soporta El Elmento canvas
+        </canvas>
+    </section>
+</body>
+</html>

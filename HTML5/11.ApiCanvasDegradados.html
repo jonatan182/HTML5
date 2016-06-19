@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Api Canvas</title>
+<style>
+	section{
+		width:500px;
+		margin:auto;
+	}
+	/*#lienzo{
+		background-color:#F00;
+	}*/
+</style>
+<script>
+	function comenzar(){
+		var elemento = document.getElementById("lienzo");//identificamos a nuestro canvas
+		lienzo = elemento.getContext("2d");//indicamos que la naturaleza del lienzo va hacer en 2 dimenciones, se llama lienzo, es una variable predefinida
+		
+		/*var degradado=lienzo.createLinearGradient(0,150,500,150);//posicion inicial donde empieza el degradado, y posicion final donde termina el degradado con 0.150,500,150 indicamos el degradado de izqioerda a derecha*/
+		//Acontinuacion indicamos los colores que tendra nuestro degradado
+		//creacion De Degradado Lineal
+		//var degradado=lienzo.createLinearGradient(0,0,500,300);//indicamos el degradado en diagonal, es decir, entre el parentesis dibujamos una linea "0,0" indica el punto inicial y "500,300" indica el punto final por eso se traza una linea diagonal
+		/*degradado.addColorStop(0,"red");// 0 y 1 marca la posición inicial y final del color en un degradado van de 0 a 1
+		degradado.addColorStop(1,"green");*/
+		
+		//creacion de degradado radial
+		var degradado = lienzo.createRadialGradient(250,150,50,250,150,300);//con "250,150" inidcamos el punto del centro del primer circulo, con "50" indicamos el radio con "250,150" indicamos el punto del centro del segundo circulo en este caso es el mismo, y con "300" indicamos el radio del segundo circulo
+		
+		//degradado.addColorStop(0.8,"red");//para que aparezca mayor proporcion del color rojo, el rojo ocupara 0.8 y el verde tansolo 0.2
+		degradado.addColorStop(0,"red");
+		degradado.addColorStop(1,"green");
+		
+		
+		lienzo.fillStyle=degradado;//indicamos a nuestro canvas que se tiene que colorear con este degradado que acabamos de crear
+		lienzo.fillRect(0,0,500,300);//para dibujar un rectangulo solido, tenemos que dibujarlo que ocupe todo el ancho para que se vea el degradado, si solo lo dibujamos ccn un ancho de 20 solo apreciariamos el color rojo, ya que el degradado es del lienzo mas no del rectangulo, tenemos que dibujar el rectangula para poder areciar el degradado, tenemos que indicar el punto de inicio y el tamaño para apreciar que color queremos ver, aca lo indicamos en 500 para apreciar todo el degradado
+		
+	}
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+<body>
+<section id="dibujo">
+	
+    <canvas id="lienzo" width="500" height="300">
+    	Su navegador No soporta el elemento html5 canvas<!--Este texto aparecera si el navegador No Soporta Canvas-->
+    </canvas>
+
+</section>
+</body>
+</html>

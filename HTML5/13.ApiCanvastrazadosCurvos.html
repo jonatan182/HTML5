@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<style>
+	#lienzo{
+		border:1px solid #F00;
+	}
+</style>
+<script>
+	function comenzar(){
+		var elemento = document.getElementById("lienzo");
+		lienzo = elemento.getContext("2d");
+		
+		lienzo.beginPath();//indicamos que vamos a empezar a dibujar un trazado
+		//lienzo.arc(100,100,50,0,1,false);//dibujamos arco, con "100,100 indicamos el punto inicial dentro del canvas, con "50" indicamos el radio del circulo, con "0" y "1" indicamos el angulo que queremos establecer dentro del circulo, y se mide en radianes, un radian es igual a una longitud de radio, en este caso 50, el "0" es el angulo inicial, el "1" es el angulo final, ocea que la longitud del arco sera de 50, si sustituimos el 0 por un 0.5 la longitud del arco sera 25 la mitad ya que ira hasta 1 medio radian, con false indicamos que nos devuelva el arco que se formo, si lo colocamos en true hace lo contrario y nos devuelve el resto del circulo sin la parte del arco
+		//lienzo.arc(100,100,50,0,Math.PI,false);//resulta que un circulo contiene 360grados y eso es igual a 2*PIradiandes, pi = 3,1416, entonces un semicirculo"180grados" seria pi
+		lienzo.moveTo(250,50);//indicamos iun punto inicial, en el anterior no hacia falta indicarlo.
+		//lienzo.quadraticCurveTo(200,100,50,200);//tambien sirve para dibujar un arcos con un punto de control, el punto de inicio va hacer 50,50, el punto final va hacer 50,200, y el punto de control va hacer 125,50 
+		lienzo.bezierCurveTo(200,125,300,125,250,200);//hay dos puntos de control, "200,125" perteneces al primer punto de control, "300,125" son el segundo punto de control, concuerda el 125 por eso forma una "s", y "250,200" pertenece al punto final, el punto inicial es "250,50" que lo indicamos con moveTo
+		lienzo.stroke();//para dibujar los trazados sin relleno
+	}
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+<body>
+<section>
+	<canvas id="lienzo" width="500" height="300">
+    	Su Navegador No Admite El Elemento Canvas
+    </canvas>
+</section>
+</body>
+</html>

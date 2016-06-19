@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Formularios HTML5</title>
+	<style>
+		#edad1{
+			width:100px;
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+<form name="miFormulario" id="miFormulario" method="get" autocomplete="off" ><!--por defecto en los formulario biene autocomplete="true" esta propiedad nos sirve para que se almacene en memoria lo ultimo que indicamos en las cajas de texto con el fin de que despues ahorremos texto si vamos a introducir lo mismo, si la indicamos en off, indicamos que no nos guarde en memoria lo ultimo que escribimos en cada caja de texto-->
+    	Texto:&nbsp;<input type="text" name="text1" id="text1" required><!--Con required indicamos que el campo es obligatorio, si no indicamos ningun valor y enviamos el formulario se mostrara una alerta indicando que el campo es requerido y no se enviara el formulario-->
+        <br>
+        Email:&nbsp;<input type="email" name="email1" id="email1"><!--type="Email" es una nueva especificacion de html5 que sirve para indicar emails, se valida que sea un email valido, si no es valido se muestra una alerta-->
+        <br>
+        Buscar:&nbsp;<input type="search" name="buscar1" id="buscar1"><!--type="search" es una nueva especificacion de html5 que sirve para indicar casillas de busqueda-->
+        <br>
+        URL:&nbsp;<input type="url" name="url1" id="url1"><!--type="url" es una nueva especificacion de html5 que sirve para indicar url, se valida que sea un url valido, si no es valido se muestra una alerta-->
+        <br>
+        Telefono:&nbsp;<input type="tel" name="tel1" id="tel1"><!--type="tel" es una nueva especificacion de html5 que sirve para indicar al navegador de turno que es un telefono lo que se va almacenar en este campo,No aplica ninguna validacion, solo sirve para indicar a los navegadores de los diferentes dispositivos que es un telefono para que lo adapte a los diferentes dispositivos ya que no sera lo mismo verlo en un navegador de pc, que en un navegador de telefono movil-->
+        <br>
+        Number:&nbsp;<input type="number" name="edad1" id="edad1" min="0" max="100" step="6" placeholder="Multiplos 6"><!--type="number" es una nueva especificacion de html5 que sirve para indicar numeros, se valida que sea un numero valido y que este en el rango determinado "min,max", si no indicamos min ni max se admite cualquier valor numerico, si no es numerico se muestra un alerta, si no es valido se muestra una alerta, con step indicamos que solo admite valores de "min+step" en este caso es igual a 6, ocea multiplos de 6, con placeholder indicamos como una marca de agua a la caja de texto, que sirve de informacion para el usuario-->
+        <br>
+        Range:&nbsp;<input type="range" name="range1" id="range1" min="0" max="100" step="6"><!--type="range" es una nueva especificacion de html5 que sirve para indicar rangos, si no indicamos min ni max se admite cualquier valor numerico de 0 a 100, con step indicamos que solo admite rangos de "min+step" en este caso es igual a 6, ocea multiplos de 6-->
+        <br>
+        Fecha:&nbsp;<input type="date" name="date" id="date"><!--type="date" es una nueva especificacion de html5 que sirve para indicar una fecha, se valida que sea una fecha valida, si no es valida se muestra una alerta-->
+        <br>
+        Mes:&nbsp;<input type="month" name="mes" id="mes"><!--type="month" es una nueva especificacion de html5 que sirve para indicar un mes, se valida que sea un mes valido-->
+        <br>
+        Semana:&nbsp;<input type="week" name="semana" id="semana"><!--type="week" es una nueva especificacion de html5 que sirve para indicar una semana es decir el numero de la semana de un año, se valida que sea una semana valido-->
+        <br>
+        Hora:&nbsp;<input type="time" name="hora" id="hora"><!--type="time" es una nueva especificacion de html5 que sirve para indicar la hora, se valida que la hora sea valida-->
+        <br>
+        Zona Horaria:&nbsp;<input type="datetime" name="zona" id="zona"><!--type="datetime" es una nueva especificacion de html5 que sirve para indicar la fecha y  hora junto con el codigo de la zona horaria, se valida que la zona horaria sea valida, actualmente solo sirve para el navegador opera-->
+        
+        <br>			<!---Nuevos Atributos--->
+        Multiple Email:&nbsp;<input type="email" name="email2" id="email2" multiple><!--type="Email" es una nueva especificacion de html5, con  el atributo multiple  sirve para indicar varios emails,NO se valida que sea un email valido, con multiple podemos especificar mas de 1 email separados por comas ","-->
+        <br/>
+        AutoFocus:&nbsp;<input type="text" name="auto" id="auto" autofocus /><!--Con Autofocus podemos hacer que al cargar la pagina el focu quede en este componente-->
+        <br/>
+       Codigo Postal:&nbsp; <input pattern="[0-9]{2}" name="cod" id="cod" placeholder="2 Digitos"/><!--pattern sirve para indicar que se van a ingresar 2 numeros de 0 al 9, sino es asi entonces se mostrara un alerta -->
+        
+        <input type="submit" value="Enviar">
+    </form>
+    Nombre2:&nbsp;<input type="text" name="name1" id="name1" form="miFormulario"/><!--el atributo form nos sirve para indicar que este elemento pertenece a un formulario con id="Miformulario" estando afuera de el como en este caso, de tal manera que al enviar el formulario dando click en el boton submit se envia la informacion de este campo ya que pertenece a ese formulario gracias al atributo form-->
+</body>
+</html>

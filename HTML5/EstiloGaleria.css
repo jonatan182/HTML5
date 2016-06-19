@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, figure, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+ padding: 0;
+ margin: 0;
+ font-size: 100%;
+ font-weight: normal;
+}
+table { border-collapse: collapse; border-spacing: 0; }
+td, th, caption { font-weight: normal; text-align: left; }
+img, fieldset { border: 0; }
+ol { padding-left: 1.4em; list-style: decimal; }
+ul { padding-left: 1.4em; list-style:square; }
+q:before, q:after { content:''; }
+/*fin reset*/
+
+
+body{
+	font-size:62.5%;
+}
+h1{
+	font:normal 2.5em Verdana, Geneva, sans-serif;
+	background:-webkit-linear-gradient(top, #00F, #0CF);/*Indicamos degradado que va ir de arriba hacia abajo, y va ser de azul oscuro a azul claro*/
+	width:45%;/*indicamos que ocupara un 45% del ancho de la pantalla*/
+	border-radius:10px;/*que los bordes sean redondos*/
+	text-align:center;
+	margin:15px auto;
+	padding:15px;
+	color:#fff;
+	box-shadow:#00F 5px 5px 10px;/*indicamos Sombreado a la caja contenedora de color azul con una difuminacion de 10px y por la parte horiazontal de 5px y parte vertical 5px*/
+	text-shadow:#FFF 2px 2px 3px;/*Indicamos sombreado al texto de color azul con difuminacion de 3px*/
+}
+h2{
+	font:bold 1.7em Verdana, Geneva, sans-serif;
+	margin:0px;
+	padding:5px 0px 5px 0px;
+	color:#000;
+}
+section{
+	width:95%;
+	border-top:dashed #999 1px;
+	margin:15px auto; 
+}
+figure{
+	margin-top:10px;
+	margin-left:7px;
+	float:left;/*Quitamos El BlockLevel y todos los que aparecen despues se coloquen acontinuacion*/
+}
+figure img{/*selector descendiente*/
+	padding:3px;/*indicamos espacio entre el borde de la imagen y el contenido con el fin de hacer espacio y asi espesificar un color gris*/
+	background-color:#666;
+	border-radius:20px;/*Redondeamos el borde o esquinas del contenedor img*/
+	-webkit-transition:-webkit-transform 0.3s ease-in-out 0.1s;/*indicamos que todas aquellas transiciones "webkit-transform" que apliquemos sobre la imagen sean suaves, durara 0.3s la transicion y 0.1 sera el retardo */
+	box-shadow:#999 3px 5px 10px;/*indicamos el sombreado*/
+}
+figure img:hover{
+	-webkit-transform:scale(1.2);/*para incrementar el tamaño del elemento en el navegador chrome, en scale indicamos un tamaño multiplicador ciendo 1 el tamaño original, 2 seria el doble*/
+}
+footer{
+	clear:both;/*Para romper el float, es decir que no rodeara la ultima imagen*/
+	padding-top:100px;
+}
+footer p{
+	font:1.6em Georgia, "Times New Roman", Times, serif;
+	color:#666;
+	margin:10px 8px;
+}
+
+figcaption{
+	font:1.2em Arial, Helvetica, sans-serif;
+	text-align:center;
+	margin-top:5px;
+}

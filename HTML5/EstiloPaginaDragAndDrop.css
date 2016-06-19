@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+	#cajaimagen{
+		float:left;/* posicionarla a la izquierda */
+		width:300px;
+		margin:30px;
+		border:solid 1px #FF0000;
+	}
+	#zonadestino{
+		float:left;
+		width:550px;
+		height:400px;
+		margin:100px;
+		border:solid 1px #0000FF;
+	}
+

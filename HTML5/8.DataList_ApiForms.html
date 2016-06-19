@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+	<style>
+		table{
+			text-align:center;
+			background-color:#F96;
+			width:25%;/*El Ancho de la tabla sera el 25% de lo que sera el ancho del contenedor "pantalla"*/
+			margin:auto;/*para centrarlo*/
+			border:2px #CC3300 dashed;
+		}
+		td{
+			padding:15px;/*pading es la distancia que hay entre el contenido y el borde del contenido*/
+		}
+	</style>
+    <script>
+	
+		function comenzar(){
+			//para identificar aquellos elementos que vamos a manipular desde javascript
+			var nombre = document.getElementById("nombre");
+			var apellido = document.getElementById("apellido");
+			
+			//para poner a la escucha de los posibles eventos
+			nombre.addEventListener("input", validar);//con esto estamos diciendo a nuestro objeto nombre que este a la escucha del evento input, es decir cuando introduzcamos informacion en el objeto nombre llamara al metodo validar, cada vez que introduzcamos informacion en el objeto descencadenara la accion llamara a la funcion validar;
+			apellido.addEventListener("input", validar);
+			
+			validar();
+		}
+		function validar(){//esta funcion va a validar que los dos componentes esten con su informacion
+			if(nombre.value=="" && apellido.value==""){
+				nombre.setCustomValidity("Introduce Nombre O Apellido");//para indicar mensaje de error personalizado en el campo nombre, no envia el formulario hasta que se introduzcan datos, es decir setCustomValidyty aparte de indicar mensaje de error detiene el flujo del programa, esta instruccion se ejecuta cuando demos click en el boton submit, por eso cuando se carga la pagina se pone en rosado por que ingresa a este if, pero no ejecuta el mensaje personalizado por que no se ha dado click en el boton submit
+				
+				nombre.style.background="#ffdddd";//indicamos color de fondo en el componente nombre y apellido
+				apellido.style.background="#ffdddd";
+			}else{
+				nombre.setCustomValidity("");//para quitar mensaje de error
+				
+			    nombre.style.background="#ffffff";//indicamos color de fondo en el componente nombre y apellido
+				apellido.style.background="#ffffff";
+			}
+		}
+		
+		
+		window.addEventListener("load", comenzar);//para que descencadene el evento cuando cargue la pagina
+	</script>
+</head>
+<body>
+	<section>
+    	<form name="registro" method="get">
+        	<datalist id="informacion"><!--Para crear un listado-->
+            	<option value="8292685" label="Telefono 1"><!--Para Especificar los valores que puede tomar el campo, value es el valor que va a tomar y con label es una etiqueta para informacion que aparecera al lado del valor-->
+                <option value="3213466996" label="Telefono 2">
+                <option value="3102096010" label="Telefono 3">
+            </datalist>
+    		Teléfono:&nbsp;<input type="tel" name="telefono" id="telefono" list="informacion"/><!--El valor del atributo list tiene que ser igual al valor del id del datalist, el atributo list nos sirve para especificar un listado, es decir cuando demos click en la flecha del lado derecho del componente tel se desplegara la lista con los telefonos para escojer uno-->
+    	</form>
+        <br/>
+        <br/>
+        <form name="registro_usuarios" method="get">
+        	<table>
+            	<tr>
+                	<td>Nombre:</td>
+                    <td><input type="text" name="nombre" id="nombre"/></td>
+                </tr>
+              	<tr>
+                	<td>Apellido:</td>
+                    <td><input type="text" name="apellido" id="apellido"/></td>
+                </tr>
+              	<tr>
+                	<td>Edad:</td>
+                    <td><input type="number" name="edad" id="edad" min="1" max="100"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" value="Enviar"/></td><!--con colspan indicamos que va a ocupar dos columnas y con align centramos el boton, si quisieramos que ocupara dos filas utilizariamos rowspan="2"-->
+                </tr>
+            </table>
+        </form>
+    </section>
+</body>
+</html>

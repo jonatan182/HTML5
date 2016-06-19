@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<style>
+	#lienzo{
+		border:1px solid #F00;/*Marcamos Limites Del Canvas*/
+	}
+	section{
+		width:800px;
+		position:relative;
+		margin:auto;
+	}
+</style>
+<script>
+	function comenzar(){
+		var elemento = document.getElementById("lienzo");
+		//dibujamos la cara
+		lienzo = elemento.getContext("2d");
+		lienzo.arc(200,150,100,0,Math.PI*2,false);
+		lienzo.stroke();
+		lienzo.lineWidth=10;//cambiamos grozor de nuestra linea
+		lienzo.lineCap="round";//indicamos como tiene que terminar el trazado con "round" indicamos que las terminaciones del trazado sean redondas
+		//lienzo.lineCap="square";//terminacion del trazado en cuadrado, las puntas de la linea terminan en cuadrados
+		
+//lienzo.lineCap="butt";//terminacion del trazado en cortado es muy similar a square
+		//dibujamos la boca
+		lienzo.beginPath();//comenzamos el trazado
+		
+		lienzo.arc(200,170,60,0,Math.PI,false);
+		lienzo.stroke();
+		lienzo.lineWidth=5;//cambiamos grozor de nuestra linea
+		lienzo.lineJoin="miter";//para especificar la conexion de las lineas, para nuestro ejemplo sera la punta de la nariz, tenemos "miter","round" y "bevel"
+		lienzo.miterLimit=2;//para determinar el tamaño de union, si lo colocamos en 5 es el de por defecto, solo funciona si tenemos lineJoin="miter"
+		lienzo.beginPath();//comenzamos el trazado
+		lienzo.moveTo(195,135);//llevamos el lapiz donde empezara el trazado ya que es una linea
+		//dibujamos la nariz
+		lienzo.lineTo(215,155);
+		
+		lienzo.lineTo(195,155);
+	
+		lienzo.stroke();
+		
+		//Dibujamos los ojos
+		lienzo.lineWidth=1;//cambiamos grozor de nuestra linea
+		lienzo.beginPath();//para que no una trazados
+		//interior de los ojos
+		lienzo.arc(175,110,7,0,Math.PI*2,false);
+		lienzo.arc(225,110,7,0,Math.PI*2,false);
+		lienzo.fill();//dibujamos los ojos
+		
+		//dibujamos el exterior d elos ojos
+		lienzo.beginPath();//para que no una trazados
+		
+		lienzo.arc(168,106,15,0,Math.PI*2,false);
+		lienzo.stroke();
+		
+		//dibujamos segundo ojo
+		lienzo.beginPath();
+		
+		lienzo.arc(232,106,15,0,Math.PI*2,false);
+		lienzo.stroke();
+	}
+	
+	window.addEventListener("load",comenzar,false);//el tercer argumento lo colocamos en false por que no tenemos anidados mas elementos para descencadenar el evento de primeras
+</script>
+</head>
+<body>
+<section>
+	<canvas width="800" height="500" id="lienzo">
+    Su Navegador No Soporta El Elmento canvas
+    </canvas>
+</section>
+</body>
+</html>

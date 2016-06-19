@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<style>
+	#lienzo{
+		border:solid #900 2px;
+	}
+</style>
+<script>
+	function comenzar(){
+		var elemento = document.getElementById("lienzo");//identificamos el lienzo"canvas" y lo almacenamos en la variable elemento
+		lienzo = elemento.getContext("2d");//indicamos que el lienzo  es 2d
+		//Creamos El Trazado
+		lienzo.beginPath();//intruccion para comenzar el dibujo
+		lienzo.moveTo(100,200);//Para mover el lapiz dentro del canvas que tiene 500,300, es decir como si ubieramos llevado la mano dentro del lienzo al punto 100, 200 para empezar adibujar apartir de esa posicion
+		lienzo.lineTo(200,200);//una vez llevado el lapiz a las coordenadas procedemos a dibujar la linea con el metodo lineTo partiendo desde donde se movio el lapiz que fue en 100, 200, y ira hasta 200, 200, es decir una linea recta de 100, en pocas palabras con moveTo indicamos el punto inicial, y con lineTo indicamos el punto final y a su vez dibujara la linea.
+		lienzo.lineTo(150,100);//para dibujar la siguiente linea, el punto de partida sera 200, 200 que fue la del aterior linea y ira hasta 150,150
+		lienzo.lineTo(100,200);
+		//lienzo.closePath();//cerramos nuestro trazado
+		//lienzo.stroke();//dibuja el dubujo del trazado vacia
+		//lienzo.fill();//dibuja el trazado relleno
+		lienzo.clip();//genera una mascara "ventana", es decir inidcamos que el anterior triangulo es una mascara, una mascara es como una ventana en donde solo veremos esa parte
+		//empezamos a dibujar
+		lienzo.beginPath();//para dibujar las lineas horizonateles, el anterior beginParth(); fue para dibujar la mascarafa "triangulo"
+		for(i=0;i<250;i+=10){
+			lienzo.moveTo(0,i);//movemos el lapiz
+			lienzo.lineTo(500,i);//hacemos trazado lineal
+		}
+		lienzo.stroke();//dibujamos trazados, solo veremos lo que la mascara nos pueda brindar	es decir las lineas que pasen por la mascara"ventana"
+	}
+
+	window.addEventListener("load",comenzar,false);//cuando se cargue la pagina llamara a comenzar
+</script>
+</head>
+<body>
+<section id="dibujo">
+	<canvas id="lienzo" width="500" height="300">
+    	Este Elemento No Es Soportado Por Su Navegador
+    </canvas>
+</section>
+</body>
+</html>

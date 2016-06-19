@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<style>
+	#lienzo{
+		border:solid #000 1px;
+	}
+	section{
+		width:800px;
+		margin:auto;
+	}
+</style>
+<script>
+	function comenzar(){
+		var elemento = document.getElementById("lienzo");
+		lienzo = elemento.getContext("2d");
+		
+		lienzo.transform(3,Math.PI*1,2,3,0,0);//"3" es el primer parametro y sirve para indicar el tamaño de anchura  con 3 indicamos que sera el triple, "Math.PI" es el segundo parametro y sirve para la rotacion "3" es el cuarto parametro y sirve para dar tamaño al altura con 3 indicamos que sera el triple de grande que el original,Los dos Ultimos valorres "0,0" indica las cordenadas por defecto que estan en la partue superior izquierda de la pantalla, "2" es el tercer parametro y nos sirve para cesgar, el metodo transform es acumulativo 
+		
+		lienzo.font= "bold 20px verdana";
+		
+		lienzo.fillText("Hola Alumnos",50,50);
+	}
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+<body>
+	<section>
+    	<canvas id="lienzo" width="800" height="500">
+        	Su Navegador No Soporta Canvas
+        </canvas>
+    </section>
+</body>
+</html>

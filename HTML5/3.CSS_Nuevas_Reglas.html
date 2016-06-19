@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Nuevas Reglas Css3</title>
+
+<style>
+	/*Selector name*/
+	p[name="miselementos"]{/*nuevo selector css que permite apuntar a aquellos elementos p que tengan el atributo name="miselementos"*/
+		color:#F00;
+	}
+	p[name^="mis"]{/*selector css que permite apuntar a aquellos elementos p que tengan el el atributo name y que empiece con "mis"*/
+	}
+	p[name$="tos"]{/*selector css que permite apuntar a aquellos elementos p que tengan el el atributo name y que terminen con "tos"*/
+	}
+	p[name*="tos"]{/*selector css que permite apuntar a aquellos elementos p que tengan el el atributo name y que contengan en cualquier parte  "tos"*/
+	}
+	/*selectores pseudoclass*/
+	p:nth-child(2){/*selector que permite apuntar al segundo p al segundo hijo de todos los padres, es decir si tenemos mas etiquetas "p" dentro de otro contenedor padre, le aplicara al segundo p*/
+	}
+	p:nth-child(old){/*selector que permite apuntar a todos los p imapares hijos*/
+	}
+	p:nth-child(even){/*selector que permite apuntar a todos los p pares hijos*/
+	}
+	p:first-child{/*selector que apunta a todos los primeros "p" hijos*/
+	}
+	p:last-child{/*selector que apunta a todos los ultimos "p" hijos*/
+	}
+	p:only-child{/*selector que apunta a la unica "p" hija es decir si hay varias no apuntara, si solo hay una, si apuntara*/
+	}
+	
+	#principal{
+		width:300px;
+		/*background-color:#00F;*/
+		margin:15px auto;/*Indicamos El Espacio del margen por arriba y por abajo de 15px, y el espacio de la margen de izquierda y derecha sera auto, es decir que quedara en el centro acomodandoce a la resolucion del monitor*/
+		text-align:center;
+		padding:15px;/*Espacio Entre El Contenido y los bordes de la caja*/
+		border:2px #FF0000 solid;
+		/*Nuevas reiglas CSS*/
+		border-radius:0 15px 15px 0;/*permite redondear los borders o esquinas de un contenedor indicando un tamaño empezando por las manesillas del reloj*/
+		box-shadow:#999 15px 5px 15px;/*permite indicar sombra a la caja contenedora, empezamos por el color que tendra la sombra, "desplazamiento horizontal o vertical" el ancho y alto de la sombra y por ultimo indicamos la difuminacion de la sombra*/
+		background:-moz-linear-gradient(top, #00F, #0FF);/*indicamos degradado, indicando el navegador en que se vera bien "mozila", luego la direccion de donde va ir el degradado de arriba a bajo, puede ir botton de abajo hacia arriba y left de izquierda a derecha y despues el primer color y el segundo color del degradado, en el navegador chrome no aplica el degradado, es por eso que toca especificar el navegador en que se vera */
+		/*background:-webkit-linear-gradient(left, #00F 10%, #0FF 50%);/*indicamos degradado en el navegador chrome con "webkit"*/ /*indicamos el tamaño del color del degradado*/
+		
+		/*background:-webkit-radial-gradient(center, circle, #00F, #0FF);/*indicamos degradado circular*/
+		background:-webkit-radial-gradient(center, ellipse, #00F, #0FF);/*indicamos degradado elipce*/
+		background:-ms-linear-gradient(top, #00F, #0FF);/*indicamos degradado en el navegador explore con "ms" que es de microsoft*/
+		background:-o-linear-gradient(top, #00F, #0FF);/*indicamos degradado en el navegador opera con "o"*/
+		outline:2px dashed #3333FF;/*indicar borde superior*/
+		outline-offset:10px;/*para indicar el espacio entre el borde interior y el borde superior*/
+		/*-webkit-transform:scale(0.5);/*Para incrementar el elemento indicando el navegador, si queremos indicar en varios navegadores tenemos que copiar esta misma instruccion y cambiar el navegador "moz, o, ms..etc", en scale va el tamaño siendo 1 el tamaño original, 2 el doble del tamaño, y en esre caso "o.5" la mitad del tamaño original*/
+		-webkit-transform:scale(0.5,-0.5);/*para invertirlo*/
+		
+		/*-webkit-transform:rotate(30deg);/*para rotar el elemento 30 grados*/
+		
+		-webkit-transform:skew(30deg);/*Para cambiar la pespectiva*/
+		
+		-webkit-transition:-webkit-transform 1s ease 0.5s;/*indicamos que este componente tendra una animacion, que sera cuando se ejecute el -webkit-transform del #principal:hover, inidcamos "1s" que va ser el tiempo en que va a tardar la animacion, luego "ease" que es el tipo de efecto y por ultimo el retardo "0.5" medio segundo*/
+	}
+	
+	#principal:hover{
+		-webkit-transform:rotate(5deg);/*para rotar el elemento 30 grados cuando se pase el mouse por encima*/
+	}
+	
+	
+	/*Cuando queremos indicar una fuente que probablemente mucha gente no la tenga instalada en sus ordenadores, lo hacemos de esta manera, es muy importante que el archivo de la fuente lo subamos en el servidor*/
+	@font-face{/*regla css3 que nos permite indicar una fuente muy concreta es decir que posiblemente otros usuarios no tienen instalada esta fuente en sus ordenadores*/
+		font-family:'MipropiaFuente';/*Podemos llamarla como queramos este nombre hace referencia a la fuente  bauhs93 que copiamos en la carpeta font*/
+		src:url('Font/BAUHS93.TTF');/*Indicamos la url en donde esta el archivo de la fuente*/
+	}
+	#titulo{
+		font:bold 36px MipropiaFuente;/*Indicamos La Fuente Que Incorporamos anteriormente, puede ir en comillas simples o no*/
+		text-shadow: #0F0 5px 3px 5px;/*permite indicar sombra al texo*/
+		color:rgba(0,0,0,0.5);/*Indicamos color de fondo con una transparencia que va de 0 a 1 siendo 0 la transparencia total y 1 como si no tuviera transparencia*/
+	}
+</style>
+
+</head>
+
+<body>
+	<header id="principal">
+    	<span id="titulo">Estilos CSS3</span>
+    </header>
+	<p name="miselementos">hola</p>
+    <p>Adios</p>
+    <p>Junio</p>
+</body>
+</html>

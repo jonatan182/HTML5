@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<script>
+	function Loseventos(){
+		var elemento1 =  document.getElementsByTagName("p")[0];
+		var elemento2 =  document.getElementsByTagName("img")[0];
+		
+		elemento1.addEventListener("click",aviso1,true);//el tercer elemento lo podemos indicar cuando hay elementos anidados que descencadenan un evento, especifica cual tiene la prioridad, es decir en este caso cual evento se ejecuta de primeras, si lo colocamos en true al hacer click en la imagen que se encuentra dentro del parrafo se ejecuta primero el evento del parrafo y luego el de la imagan, si lo colocamos en false primero se ejecuta el evento de la imagen y luego el del parrafo
+		elemento2.addEventListener("click",aviso2,false);
+	}
+	function aviso1(){
+		alert("Hola Soy EL Parrafo");
+	}
+	function aviso2(){
+		alert("Hola Soy La Imagen");
+	}
+	window.addEventListener("load",Loseventos,false);
+</script>
+</head>
+<body>
+	<p><img src="imagenes/1.jpg"></p>
+</body>
+</html>

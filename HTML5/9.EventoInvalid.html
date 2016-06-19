@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<script>
+	var edad;
+	function comenzar(){
+		edad = document.getElementById("edad");
+		
+		edad.addEventListener("change",cambiar_rango);//estamos diciendo que descencadene la accion cuando cambiemos de alguna forma ese elemento o rango 
+		
+		document.datos_usuario.addEventListener("invalid",validar,true);//lo que estamos diciendo es que ponga a nuestro formulario a la escucha bajo el evento invalid, de esta forma cada vez que falle la validacion del formulario"si hay un dato que este erroneo" hara una llamada a la funcion validar, cuando haya un error se llamara a la funcion validar, el evento invalid tiene 2 caracteristicas la primera es descencadenar la accion y la segunda es que construye un objeto "error", indicamos true para darle prioridad cuando pulzamos a un elemento del formulario, "se indica cuando hay elementos anidados, ya que la edad es un elemento que se encuentra dentro del formulario y tambien esta descencadenando un evento "change", y el propio formulario que engloba a edad tambien descencadena un evento"invaid", entonces con true le damos prioridad es decir primero se ejecuta el evento del formulario y luego el evento de la edad, es una manera de establecer el orden o jerarquia a la hora de descencadenar los eventos, si no especificamos true quizas no se ejecute el evento del formulario y sea el de la edad el que se ejecute"
+		
+		document.getElementById("enviar").addEventListener("click",enviar,false);//en la misma linea identificamos el objeto y ponerlo a la escucha
+		
+		document.datos_usuario.addEventListener("input",validar_tiempo_real,false);//estamos indicando que el formulario estara a la escucha de cualquier dato que se ingrese en cualquier elemento del form
+	}
+	function cambiar_rango(){
+		var salida = document.getElementById("rango");
+		var calculo = edad.value-30;
+		
+		if(calculo<30){
+			calculo=0;
+			
+			edad.value=30;
+		}
+		salida.innerHTML=calculo+" a "+edad.value;
+	}
+	
+	function validar(e){//en e se va almacenar el objeto error del evento invalid
+		var elemento=e.target;//con target nos indica cual es el objeto de nuestro formulario que ha ocacionado el error y lo almacenamos en la variable error
+		
+		elemento.style.background="#FFDDDD";//cambiamos de color al elemento que genero el error
+	}
+	
+	function enviar(){
+		var cuadro_usuario = document.getElementById("usuario");
+		var correcto = document.datos_usuario.checkValidity();//con checkValidity nos devuelve si la validacion es true o false
+		if(correcto){
+			document.datos_usuario.submit();
+		}else if((cuadro_usuario.validity.valueMissing==true)||(cuadro_usuario.validity.patternMismatch==true)){//evaluamos si el campo usuario esta en blanco gracias a la propiedad "valueMissing" de estar en blanco ingresamos dentro del else if, o si el campo usuario no coincide con el formato de 3 letras
+			alert("El Usuario No Puede Estar Vacio Y Recuerda Que Tiene Que Tener 3 Letras");
+		}
+	}
+	
+	function validar_tiempo_real(e){
+		var elemento = e.target;
+		if(elemento.validity.valid==true){
+			elemento.style.background="#FFFFFF";
+		}else{
+			elemento.style.background="#FFDDDD";
+		}
+	}
+	
+	window.addEventListener("load",comenzar);
+</script>
+</head>
+
+<body>
+	<section>
+        	
+        <form name="datos_usuario" method="get">
+        	<table>
+            	<tr>
+                	<td>Usuario:</td>
+                    <td><input pattern="[A-Za-z]{3}" name="usuario" id="usuario" required/></td><!--pattern indicamos que solo se podran ingresar letras mayusculas y minusculas, y que sea obligatoria la introduccion de 3 caracteres, de otra manera saldra la ventana emergente indicando que se deben cumplir con esta restriccion, y con required indicamos que el campo es obligatorio-->
+                </tr>
+              	<tr>
+                	<td>Email:</td>
+                    <td><input type="email" name="email" id="email" required/></td><!--con type="email" indicamos que se va a introducir un email, y automaticaente trae consigo la validacion de que sea un email valido-->
+                </tr>
+              	<tr>
+                	<td>Edad:</td>
+                    <td><input type="range" name="edad" id="edad" min="0" max="120" value="30" step="30"/></td><!--con step conseguimos que la edad valla de 30 en 30-->
+                </tr>
+                <tr>
+                    <td><output id="rango">0 a 30</output></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" value="Enviar" id="enviar"/></td><!--con colspan indicamos que va a ocupar dos columnas y con align centramos el boton, si quisieramos que ocupara dos filas utilizariamos rowspan="2"-->
+                </tr>
+            </table>
+        </form>
+    </section>
+</body>
+</html>

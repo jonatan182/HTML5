@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+	section{
+		width:500px;
+		margin:auto;
+	}
+	#lienzo{
+		border:solid #F00 1px;
+	}
+</style>
+<script>
+var y=200;
+var x=40;
+var estado="bajando";
+var limite=200;
+
+	function comenzar(){
+		var elemento=document.getElementById("lienzo");
+		lienzo=elemento.getContext("2d");
+		
+		setInterval(animacion,25);//para llamar a la funcion animacion  cada "25milisegundos" 
+
+	}
+	function animacion(){
+		if(y<=460 && estado=="bajando"){
+			lienzo.clearRect(0,0,500,500);//borramos lo del canvas de las coordenadas que le indicamos
+			lienzo.beginPath();
+			lienzo.arc(x,y,40,0,Math.PI*2,false);
+			lienzo.fill();	
+			y+=20;
+			x+=1;
+		}else{
+			estado="subiendo";
+			if(y>=limite){
+				lienzo.clearRect(0,0,500,500);//borramos lo del canvas de las coordenadas que le indicamos
+				lienzo.beginPath();
+				lienzo.arc(x,y,40,0,Math.PI*2,false);
+				lienzo.fill();	
+				y-=20;
+				x+=1;
+			}else{
+				estado="bajando";
+				limite+=10;
+			}
+	
+		}
+
+	}
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+
+<body>
+<section>
+	<canvas id="lienzo" width="500" height="500">
+    	Su navegador No Soporta Canvas
+    </canvas>
+</section>
+</body>
+</html>

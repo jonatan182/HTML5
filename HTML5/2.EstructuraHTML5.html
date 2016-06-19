@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/><!--para ingresar caracteres especiales como las comas "," o la ñ-->
+    <meta name="description" content="pagina de enseñanza html 5"/>
+    <meta name="keywords" content="htmls, css, javascript, diseño web"/>
+	<title>Pagina De Programacion En HTML5</title>
+    <link rel="stylesheet" href="CSS/miHojaStilo.css"/><!--para linkear hoja de stylo-->
+</head>
+<!--Los Espacios verticales no se tienen encuenta a la hora de programar en html, el navegador no los tiene encuenta-->
+
+
+<body>
+	<!--Todas estas etiquetas nuevas de html5 la finalidad que tienen es de informar al navegador la estructura del documento-->
+
+    <header id="cabeceraweb"><!--Dentro Del Header va informacion de la cabecera, esta etiqueta es muy importante por que hace que nuestra pagina sea compatible con todos los dispositivos que hay hoy en dia en el mercado para ver paginas web, ya que cada dispositivo tiene una resolucion diferente, es decir se adapta-->
+    	<h1>Este Seria El Titulo De Nuestra Web</h1><!--Las etiquetas h son importantes para los navegadores por que miran que hay dentro de estas etiquetas para utilizar la informacion que hay dentro y categorizar y posicionar la pagina dentro de los resultados de busqueda. es decir ademas del <title>, <meta name""> tambien tenemos la etiqueta h para categorizar y posicionar nuestra pagina en los resultados de busqueda-->
+    </header>
+    <nav id="navegacionPrincipal"><!--indicamos barra de navegacion es decir dentro de nav va ir la barra de navegacion-->
+    	<ul>
+        	<li><a href="#">Quiénes Somos<a></li>
+            <li><a href="#">Nuestros Productos</a></li>
+            <li><a href="#">Contactanos</a></li>
+            <li><a href="#">Precios</a></li>
+        </ul>
+    </nav><!--si quitaramos esta etiqueta y la de <header>el resultado visual para el navegador del pc seria el mismo, pero gracias a estas etiquetas estamos diciendo que hay una cabecera y una barra de navegacion al navegador para que todos los dispositivos sean compatibles-->
+	<aside id="barraLateral"><!--barra lateral, informa al navegador del dispositivo en donde estamos mirando la pagina que hay una barra lateral-->
+    	<blockquote>Primer Elemento</blockquote><!--etiqueta que se utiliza para largas citas-->
+        <blockquote>Segundo Elemento</blockquote>
+        <blockquote>Tercero Elemento</blockquote>
+    </aside>
+    
+    <section id="contenidoPrincipal"><!---indica Contenido Principal-->
+    	<article><!--Etiqueta que agrupa contenidos que tienen halgo que ver, es decir contenido similar-->
+        	<header><!--header tambien sirve para especificar la cabecera de un bloque o articulo en este caso-->
+            	<hgroup><!--etiqueta que agrupa un conjunto de titulos"<h1>....<h6>", la tenemos que utilizar cuando hay titulos y subtitulos para agruparlos, si solo hay un titulo no hace falta indicar la etiqueta <hgroup>, esta etiqueta sirve para indicar al navegador del dispositivo en que estemos viendo la pagina sepa que titulos y subtitulos van juntos "tienen que ver algo"-->
+                    <h2>Titulo De La Noticia 1</h2>
+                    <h3>Subtitulo De La Noticia</h3>
+                </hgroup>
+            </header>
+            <p><mark>Noticia 1<mark></p><!--Etiqueta mark que sirbe para resaltar texto, es el efecto que utilzan los navegadores al buscar un texto-->
+            <p>Seguimos Hablando De <em>Noticia 1</em></p><!--Etiqueta em sirve para enfatizar un texto sustituye a <i> que es la etiqueta para indicar letra cursiva-->
+            <p>Terminamos De Hablar De <strong>Noticia 1</strong></p><!--Estrong pone el texto en negrita, diciendole al navegador que ese texto es importante, tambien es importante para el navegador, tambien la etiqueta strong los navegadores lo miran bastante para posicionar y categorizar la pagina web-->
+            <footer><!--Tambien sirve para indicar el pie de un bloque o articulo-->
+            	<p>Comentarios De Usuarios</p>
+            </footer>
+        </article>
+        
+        <article>
+            <header>
+            	<hgroup><!--tenemos que agrupar el titulo y el subtitulo ya que tienen algo que ver, por que esta el titulo y subtitulo-->
+            		<h2>Titulo De La Noticia 2</h2><!--para chrome y firefox en html no pueden ir mas de una etiqueta <h1> y ese h1 lo reserva para el titulo en general, si aca colocaramos en el titulo de la notica 2 un h1 y en el subtitulo un h2 posiblemente el tamaño del subtitulo sea mas grande que el del titulo de la notica 2, por eso tenemos que ir en jerarquia con la etiqueta h-->
+                    <h3>Subtitulo De La Noticia 2</h3>
+                <hgroup>
+            </header>
+            <figure><!--La idea de esta etiqueta es marcar contenido que tiene imágenes, diagramas, ilustraciones, fotos y ejemplos de código que tienen que ver con el contenido pero a su vez son independientes, como las imagenes que pueden estar relacionadas con el contenido de la pagina web pero a su ves son elementos independientes, los videos tambien pueden ir, tambien elementos de flash, es decir que figure y figcaption le dan un sentido estructural a la pagina para que al ver la pagina web en cualquier dispositivo pues ese dispositivo de turno sepa que acontinuacion viene un elemento que hace parte de la informacion del article pero que a su vez es un elemento independiente, de esta manera los navegadores de los distintos dispositivos lo van a representar correctamente-->
+            	<img src="img/1.jpg"/><!--los formatos de imagen admitidos por los navegadores web son jpg, png y gif, estos son los mas recomendables, puede ingresar otro formato pero no seria recomendable, gif solo admite 256 colores a si que es muy basico para representar botones o imagenes muy basicas, jpg admite millones de colores y png admite 8bits y 16 bits, el png y gif admite transparencia el jpg no la admite-->
+            	<figcaption><!--Etiqueta que sirve para agregar pie de imagenes tiene que ir adentro de <figure>, Esta etiqueta plantea que la usemos, solo una vez, dentro de una etiqueta figure, para dar información, agregar texto-->
+                	Paisaje Invernal
+                </figcaption>
+            </figure>
+            <p>Noticia 2</p>
+            <p>una de las peliculas mas taquilleras es <cite>La Vida Es Bella</cite></p><!--etiqueta cite sirve para resaltar titulos de libros,canciones,peliculas,trabajos propios etc. de manera visual es lo mismo que la etiqueta em pero en el sentido semantico es diferente ya que cite es para el navegador el titulo de una pelicula de una cancion un libro o un trabajo etc-->
+            <p>Terminamos De Hablar De Noticia 2</p>
+              <footer>
+            	<p>Comentarios</p>
+            </footer>
+        </article>
+        
+        <article>
+            <header>
+            	<h2>Titulo De La Noticia 3</h2><!--No hace falta indicarla dentro de <hgroup> por que no hay subtitulos-->
+            </header>
+            <p>Noticia 3</p>
+            <p>Seguimos Hablando De Noticia 3</p>
+            <p>Terminamos De Hablar De Noticia 3</p>
+            <time datetime="2015/01/31" pubdate>Noticia publicada el dia 31/04/2015</time><!--Con la etiqueta time inidcamos al navegador que se trata de una fecha o una hora, pubdate lo que hace es informarnos de que el atributo  datetime pertenece a una fecha o a una hora, y el valor de datetime sirve para hacer referencia a la fecha indicada dentro del contenido, y este valor del atrubuto tiene que llevar la anotacion aaaa/mm/dd-->
+            <footer>
+            	<p>Comentarios</p>
+            </footer>
+        </article>
+    </section>
+    
+    <footer id="piePrincipal"><!--pie de nuestra pagina, informa al navegador del dispositivo en que estamos mirando la pagina que hay un pie de pagina-->
+    	<small>Derechos reservados</small><!--para indicar el texto muy pequeño y el sentido sintactico es para presentar textos legales como copyright, todos los derechos reservados, si le damos otro uso no estamos siguiendo cien porciento el estandar html5-->
+        <address> Tel:8292695 </address><!--la etiqueta address debe ir dentro del footer y sirve para indicar al navegador que es una direcion,email, telefono o informacion de contacto, es blocklebel es decir lleva un salto de linea tanto por la parte interior como por la parte superior, y de manera visual es parecida a la etiqueta em  "cursiba"-->
+    </footer>
+</body>
+</html>

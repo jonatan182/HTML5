@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+	<style>
+		#video{
+			margin:20px auto;
+			width:720px;
+			background-color:#FF0;
+			padding:5px;
+			border:2px solid #FF9900;
+			border-radius:10px;/*indicamos borde redondo que se vera en cualquier navegador que soporte este estilo*/
+			-webkit-border-radius:10px;/*indicamos borde redondo que se vera en el navegador chrome lo hacemos asi para brindar una mayor compatibilidad*/
+			-moz-border-radius:10px;/*indicamos borde redondo que se vera en el navegador mozila*/
+			box-shadow:#666 15px 10px 10px;
+		}
+		#video:hover{
+			
+		}
+		nav{
+			margin:5px 0;
+		}
+		#botones{
+			float:left;
+			width:100px;
+			height:20px;
+		}
+		#barra{
+			background:#FFF;
+			width:600px;
+			height:16px;
+			border:1px #666666 solid;
+			padding:3px;
+			margin-left:80px;
+		}
+		#progreso{
+			width:0px;
+			height:16px;
+			background:rgba(0,0,150,0.5);
+		}
+	</style>
+	<script>
+	
+	//objeto video tiene propiedades y metodos que veremos:
+	/*propiedades:
+		1) duration: nos devuelve la duracion del video
+		2) currentTime: nos devuelve el tiempo actual del video en un punto en concreto 
+		3) paused: nos devuelve true o false indicando si el video esta pausado"true" o no lo esta"false"
+		4)ended: nos devuelve true o false indicando si el video esta finalizado"true" o no lo esta"false"
+	 *Metodo:
+	 	1)play():para reproducir el video
+		2)pause():para pausar el video
+	*/
+		var mivideo, reproducir, barra, progreso, maximo;
+		maximo = 600;//ancho de la barra
+		function comenzar(){
+			mivideo = document.getElementById("miVideo");
+			reproducir = document.getElementById("reproducir");
+			barra = document.getElementById("barra");
+			progreso = document.getElementById("progreso");
+			
+			reproducir.addEventListener("click",clicando,false);
+			barra.addEventListener("click",adelantando,false);
+		}
+		function clicando(){
+			if((mivideo.paused==false)&&(mivideo.ended==false)){//si el video no esta pausado ni finalizado
+				mivideo.pause();//pausamos el video
+				reproducir.innerHTML="Play";//permite cambiar el texto interno del boton reproducir
+			}else{
+				mivideo.play();//si el video esta pausado o finalizado entonces reproducimos
+				reproducir.innerHTML="Stop";//permite cambiar el texto interno del boton reproducir
+				
+				//funcion de js que permite llamar a una funcion con cierta frecuencia
+				bucle = setInterval(estado,30);//indicamos que llame a la funcion estado cada 30 milisegundos 
+			}
+		}
+		function estado(){
+			//acontinuacion elaboraremos una reigla de tres para saber en que estado tiene que estar la barra en un tiempo determinado
+			var total = parseInt(mivideo.currentTime*maximo/mivideo.duration);
+			progreso.style.width=total+"px";//modificamos el estilo el ancho, ya que cuenta con 0px con el valor total
+		}
+		function adelantando(posicion){
+			//para saber en donde hizo click
+			var ratonx = posicion.pageX-barra.offsetLeft;
+			//reigla de tres para saber el tiempo del video que correspondera el click que hacen
+			var nuevoTiempo = ratonx*mivideo.duration/maximo;
+			mivideo.currentTime=nuevoTiempo;
+			progreso.style.width=ratonx+"px";
+		}
+		window.addEventListener("load",comenzar,false);//evento de la pagina que se ejecutara cuando se termine de cargar toda la pagina para que se carguen los componentes y asi poder aplicar los eventos
+	</script>
+</head>
+<body>
+	<!--insertar video se hace con la etiqueta video, esta etiqueta cuenta con varios atributos:
+    1) src: Permite especificar donde se encuentra el video, En que carpeta se encuentra el video
+    2) controls: Permite especificar si nuestro video va a tener los botones de "play,pause,volumen,pantalla completa etc.."
+    3) autoplay: Permite especificar al navegador si nuestro video va acomenzar a reproducirse automaticamente cuando carge la                 pagina o no.
+    4) Loop: Permite especificar al navegador si nuestro video al llegar al final de la reproduccion vuelve otra vez al principio, 			 es decir si se reproduce indefinidamente o no.
+    5) Poster: Permite incluir una imagen JPG a modo de portada o presentacion, aparecera antes de que empiece la reproduccion del 			   video.
+    6) Preload: Permite especificar algunas caracteristicas importantes del video antes de cargarlo como por ejemeplo cuantos 					                fotogramas tiene el video, cual es su duracion etc..  
+    7) width: para indicar el tamaño del video, no hace falta indicar el heigth el alto, solo con el width es suficiente, si 		              indicamos un height se vera muy feo y las dimensiones del video no concuerdan 
+    -->
+	<!--<video src="Video/video-2012-04-05-14-22-32.mp4" controls autoplay width="520"/>-->
+    <section id="video">
+        <!--Incluiremos el video en varios formatos-->
+        <!--<video id="miVideo" controls width="520" poster="imagenes/paisaje_nieve.jpg">Indicamos poster, la imagen-->
+        <video id="miVideo" width="720">
+            <!--de esta manera conseguimos que si algun navegador da la casualidad de que no admite formato mp4 entonces que                intente con el formato oog "ogv"-->
+            <source src="Video/video-2012-04-05-14-22-32.mp4"> <!--Indicamos la prosedencia del video con formato mp4-->
+            <source src="Video/video-2012-04-05-14-22-32.ogv"> <!--Indicamos la prosedencia del video con formato ogv-->
+        </video>
+        <nav>
+        	<div id="botones">
+            	<button type="button" id="reproducir">Play</button>
+            </div>
+            <div id="barra">
+            	<div id="progreso"></div>
+            </div>
+        </nav>
+	</section>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style>
+	section{
+		width:500px;
+		margin:auto;
+	}
+	#lienzo{
+		border:solid #F00 1px;
+	}
+</style>
+<script>
+var y=200;
+var x=40;
+var estado="bajando";
+var limite=200;
+
+	function comenzar(){
+		var elemento=document.getElementById("lienzo");
+		lienzo=elemento.getContext("2d");
+		
+		window.addEventListener("mousemove",animacion,false); //indicamos evento para cuando se mueva el mouse dentro de la ventana, para que se ejecute la funcion animacion cada ves que se mueva el mouse. si el mouse no se mueve no se ejecuta la funcion animacion ya que no es un evento mousemove
+
+	}
+	function animacion(e){
+		//alert(e.clientX+ " "+e.clientY);//recuperamos la coordenada en x,y
+		lienzo.clearRect(0,0,500,500);//limpiamos lo del canvas
+		var xRaton=e.clientX;
+		var yRaton=e.clientY;
+		var xCentro = 250;
+		var yCentro=30;
+		
+		var angulo = Math.atan2(xRaton-xCentro,yRaton-yCentro);
+		var x=xCentro + Math.round(Math.sin(angulo)*10);
+		var y=yCentro + Math.round(Math.cos(angulo)*10);
+		lienzo.beginPath();
+		lienzo.arc(xCentro,yCentro,20,0,Math.PI*2,false);
+		lienzo.moveTo(320,30);//movemos el lapiz
+		
+		lienzo.arc(300,yCentro,20,0,Math.PI*2,false);
+		
+		lienzo.stroke();
+		
+		//dibujamos interior de los ojos
+		lienzo.beginPath();
+		lienzo.arc(x,y,10,0,Math.PI*2,false);
+		
+		lienzo.moveTo(x,y);//movemos el lapiz
+
+		lienzo.arc(x+50,y,10,0,Math.PI*2,false);
+		lienzo.fill();
+		
+	}
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+
+<body>
+<section>
+	<canvas id="lienzo" width="500" height="500">
+    	Su navegador No Soporta Canvas
+    </canvas>
+</section>
+</body>
+</html>

@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+/*las etiquetas  html5 son block Se basa en el modelo caja contenedor, es decir que las etiquetas y componentes estan dentro de una caja, acontinuacion con css colorearemos esa caja contenedora*/
+#cabeceraweb{/*Selector de id*/
+	background-color:#00F;
+}
+#navegacionPrincipal{
+	background-color:#f00;
+}
+body{/*Es Un selector, le estamos diciendo que vamos a cambiar la apariencia a body, es un selector de etiqueta*/
+	
+}
+#barraLateral{
+	background-color:#0C9;
+	float:left;/*Para desplazar la barra lateral a la izquierda, lo que hace esta etiqueta es romper el flujo de como se colocan los elementos por defecto en una pagina web, y ademas de desplzarlo a la izquierda la propiedad float para que ya no ocupe el 100*100 del ancho de la pantalla si no solo ocupe la longitud del ancho del texto, y lo mas importante es que el resto de elementos que puedan ir por debajo se van a situar rodeando a este elemento "barraLateral" por que tiene la propiedad float.
+Por lo que vamos a conseguir dos cosas:
+1)que se coloque a la izquierda ocupando No el 100% del ancho de la pagina si no lo que ocupe el ancho del texto
+2)lo que pueda haber despues que es la etiqueta "section" en este caso, se colocara rodeando este elemento*/
+	height:1080px;/*indicamos el alto de la barra*/
+}
+#contenidoPrincipal{
+	background-color:#606;
+	margin-left:210px;/*indicamos que tenga una separacion por la izquierda de 210px, en la parte izquierda esta la barra lateral, pero como esta flotante es como si no ocupara espacio, por eso indicamos el margen izquierdo desde la esquina de la pagina*/
+}
+#piePrincipal{
+	background-color:#FF0;
+	clear:both;/*Rompe el funcionamiento del float para el elemento en que lo aplicamos, es decir que el float no pizara o ocultara el piePrincipal*/
+}
+li{/*Por Defecto Es BlockLebel es decir tiene salto de linea por eso aparece uno de bajo del otro, por lo que ocupa el 100*100 del ancho de la pantalla*/
+	background-color:#CC0;
+	display:inline;/*para quitar el BlockLebel es decir que no tendra salto de linea No ocupara el 100*100 de la pantalla si no solo lo que ocupe la longitud del texto que esta adentro del li, asi que saldra uno del lado del otro*/
+	margin-left:50px;
+}
+

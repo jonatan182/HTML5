@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<style>
+
+	#lienzo{
+		background-color:#F00;
+	}
+	section{
+		width:500px;
+		position:relative;
+		margin:auto;
+	}
+
+</style>
+<script>
+	
+	function comenzar(){
+		var elemento = document.getElementById("lienzo");//identificamos el elemento  lienzo
+		lienzo = elemento.getContext("2d");//indicamos que la naturaleza del lienzo va hacer en 2 dimenciones, se llama lienzo, es una variable predefinida
+		
+		//para indicar colores, deben estar de primeras, antes de dibujarlo
+		lienzo.fillStyle="#4355dc";//podriamos indicar los colores en ingles o con codigo como en este caso, en este caso aplicamos color a el rectangulo solido al relleno del rectangulo fillRect
+		lienzo.strokeStyle="#00ff00";//indicamos color al rectangulo strokeRect que no es solido es decir al marco
+		lienzo.globalAlpha=0.3;//para indicar la transparencia de todos los dibujos del lienzo, va de "0 a 1", donde 0 es totalmente transparente y 1 opaco total
+		
+		//para dibujar
+		lienzo.fillRect(110,110,100,100);//para dibujar un rectangulo solido
+		lienzo.strokeRect(220,110,100,100);//para dibujar un rectangulo que no es solido, es decir solo el marco
+		//lienzo.clearRect(130,130,50,50);//para agregar especie de borrador
+		
+	
+	}
+	
+	window.addEventListener("load",comenzar,false);
+</script>
+</head>
+
+<body>
+<!--Canvas Es como un lienzo para Un pintor en donde vamos a pintar, ya que un pintor no puede pintar en el aire, necesita de un lienzo para dibujar, lo mismo sucede en html5 no podemos pintar en la pagina, necesitamos un lienzo"canvas".
+canvas es una zona acotada, nosotros indicamos las dimenciones que debe tener, en donde despues incluiremos graficos, textos, imagenes, dotaremos de animacion a sus graficos, textos, imagenes -->
+
+<section id="dibujo">
+	
+    <canvas id="lienzo" width="500" height="300">
+    	Su navegador No soporta el elemento html5 canvas<!--Este texto aparecera si el navegador No Soporta Canvas-->
+    </canvas>
+
+</section>
+</body>
+</html>
